@@ -1,0 +1,249 @@
+<app-navigation></app-navigation>
+
+<div class="page-container">
+  <div class="company-logo">
+
+    <p style="font-size: 50px;">Manager</p>
+    <div class="manager">
+
+      <button class="profile" (click)="profileManager()">Profile</button>
+      <button class="profile" (click)="Clients()">Clients</button>
+      <button class="profile" (click)="product()">Products</button>
+    </div>
+
+    <div class="buttonss">
+      <button class="side" (click)="addProduct()">Add Product</button>
+      <!-- <button class="side" (click)="fetchTours()">All Tours</button> -->
+      <button class="side" (click)="viewOutofstockProducts()">Out of Stock</button>
+      <button class="side" (click)="viewStockedProducts()">In Stock</button>
+    </div>
+  </div>
+
+  <div *ngIf="productDashboard" class="product-dashboard">
+    <!-- tour cards -->
+    <div class="buttonsss">
+      <p class="top">All Products<br /><span style="color: #9E9E9E">{{ allproductsCount }}</span></p>
+      <p class="top">Out of Stock <br /><span style="color: #4CAF50">{{ completedproductsCount }}</span></p>
+      <p class="top">In stock<br /><span style="color:#2196F3">{{ ongoingproductsCount }}</span></p>
+      <p class="top">
+        <span>
+          <input type="text" class="search" placeholder="Search Products"
+            style="border: solid 1px #a09e9e; height: 50px; width: 300px; text-align: center; font-size: large; border: 0px solid;"
+            [(ngModel)]="searchTearm" (input)="filterProducts()" />
+        </span>
+      </p>
+    </div>
+
+    <div *ngIf="filteredProducts" class="card-container">
+      <div *ngFor="let tour of filteredProducts" class="cards" (click)="productDetails(tour)">
+        <!-- <h4>{{ product.productName }}</h4> -->
+        <p><span style="font-weight: bold;">Products Bought: </span>{{ tour.numberOfTickets }}</p>
+        <p>
+          <!-- <span style="font-weight: bold;">Quantity: </span>{{ product.Quantity }} -->
+        </p>
+        <p>
+          <!-- <span style="font-weight: bold;">Available Products: </span>{{ product.Quantity - tour.numberOfTickets }} -->
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="dashboard" class="client-container">
+
+    <!-- <div *ngIf="filteredClients" class="clientCard"> -->
+
+    <!-- <div *ngFor="let client of filteredClients" class="card"> -->
+    <!-- <h4>{{ client.userName }}</h4> -->
+    <!-- <p style="font-size: medium;"><span style="font-weight: bold;">User Email: </span>{{ -->
+    <!-- client.email }}</p> -->
+    <!-- <p style="font-size: medium;"><span style="font-weight: bold;">Phone no: </span>{{ -->
+    <!-- client.phone_no }}</p> -->
+
+    <!-- <button class="deletes" (click)="showAcceptanceForm=true">Delete</button> -->
+    <!-- <div id="logincontainer"> -->
+    <!-- <div *ngIf="showAcceptanceForm" class="modal-overlay"> -->
+    <!-- <div class="updatecontainer"> -->
+    <!-- <p>Do you want to delete?</p> -->
+    <!-- <p *ngIf="deleteSuccesss">{{deleteSuccess}}</p> -->
+    <!-- <!~~ <button (click)="deletesUser(client.email)" class="yes">Yes</button> ~~> -->
+    <!-- <button (click)="closeAuth()" class="no">No</button> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+
+  </div>
+
+  <!--  profile management -->
+  <div *ngIf="profileview" class="magic">
+    <div id="signupcontainer">
+      <h2>Profile Maanagement</h2>
+      <div class="formcontainer">
+        <form id="signup-form" (ngSubmit)="updateSubmit()">
+          <p *ngIf="success" style="color: #007BFF;" id="response">{{ successUpdate }}</p>
+          <p *ngIf="error" id="response">{{ updateError }}</p>
+          <label>User Name</label>
+          <input type="text" placeholder="username" [(ngModel)]="userName" name="userName">
+          <label>Email address</label>
+          <input type="email" placeholder="example@gmail.com" [(ngModel)]="email" name="email">
+          <label>Phone_no</label>
+          <input type="text" placeholder="phone number" [(ngModel)]="phone_no" name="phone_no">
+          <label>Password</label>
+          <input type="password" [(ngModel)]="password" name="password">
+          <label>Confirm Password</label>
+          <input type="password" [(ngModel)]="confirm_password" name="confirm_password">
+          <button type="submit">accept >>></button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- create product form -->
+  <div *ngIf="showProductForm" class="product-form-container product-form-transition">
+    <div class="product-form product-form-transition">
+      <form id="product-form">
+        <p style="margin: 10px; color: blue;font-size: 20px;">{{ successAssign }}</p>
+        <p style="margin: 10px; color: blue">{{ updateResponse }}</p>
+        <p [style.color]="isWhichError ? 'blue' : 'red'">{{ errorResponse }}</p>
+
+        <!-- Product Info -->
+        <p style="font-size: medium; font-weight: bold">Product Highlights</p>
+        <div class="productInfo">
+          <div class="form-group">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" placeholder="Product Name" name="productName"
+              [(ngModel)]="productForm.productName" required />
+          </div>
+          <div class="form-group">
+            <label for="tourImage">Product Image</label>
+            <input type="text" id="productImage" placeholder="Product Image URL" name="productImage"
+              [(ngModel)]="productForm.productImage" required />
+          </div>
+          <div class="form-group">
+            <label for="productCategory">Product Category:</label>
+            <select id="productCategory" name="productCategory" [(ngModel)]="productForm.productCategory" required>
+              <option value="" disabled>Product category</option>
+              <option value="Jewellery">Jewellery</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Fashion Wear">Fashion Wear</option>
+              <option value="Grocery">Grocery</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="productPrice">Product Price:</label>
+            <input type="number" id="productPrice" placeholder="Product Price" name="productPrice"
+              [(ngModel)]="productForm.productPrice" required />
+          </div>
+        </div>
+
+        <!-- Itineraries -->
+        <p style="font-size: medium; font-weight: bold">Itineraries</p>
+        <div class="tourInfo">
+          <div class="form-group">
+            <label for="Quantity">Quantity:</label>
+            <input type="number" id="Slots" placeholder="Quantity available" name="Quantity" [(ngModel)]="productForm.Quantity"
+              required />
+          </div>
+        </div>
+
+        <!-- more info -->
+        <p style="font-size: medium; font-weight: bold">More Info</p>
+        <div class="tourInfo">
+          <div class="form-group">
+            <label for="tourContact">Supplier Contact:</label>
+            <input type="text" id="supplierContact" placeholder="Supplier Contact" name="supplierContact"
+              [(ngModel)]="productForm.supplierContact" required />
+          </div>
+          <div class="form-group">
+            <label for="productDescription">Product Description:</label>
+            <textarea id="productDescription" placeholder="Product Description" name="productDescription"
+              [(ngModel)]="productForm.productDescription" required></textarea>
+          </div>
+
+        </div>
+        <p style="margin: 10px; color: blue">{{ successAssign }}</p>
+        <p style="margin: 10px; color: blue">{{ updateResponse }}</p>
+        <p [style.color]="isWhichError ? 'blue' : 'red'">{{ errorResponse }}</p>
+        <button (click)="closeProduct()" class="close">Close</button>
+        <button type="submit" class="formSubmit">Create Product</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- update form -->
+  <div *ngIf="showUpdateForm" class="tour-form-container tour-form-transition">
+    <div class="tour-form tour-form-transition">
+      <form id="tour-form" (ngSubmit)="updateProductForm()">
+        <p style="margin: 10px; color: red">{{ updateResponse }}</p>
+        <p style="margin: 10px; color: blue;font-size: 40px;">{{ successResponse }}</p>
+        <!-- Tour Info -->
+        <p style="font-size: medium; font-weight: bold">Tour Highlights</p>
+        <div class="tourInfo">
+          <div class="form-group">
+            <label for="tourName">Tour Name:</label>
+            <input type="text" id="tourName" placeholder="Tour Name" name="tourName" [(ngModel)]="productForm.productName"
+              required />
+          </div>
+          <div class="form-group">
+            <label for="tourImage">Tour Image</label>
+            <input type="text" id="tourImage" placeholder="Tour Image URL" name="tourImage"
+              [(ngModel)]="productForm.productImage" required>
+          </div>
+          <div class="form-group">
+            <label for="tourCategory">Tour Category:</label>
+            <select id="tourCategory" name="tourCategory" [(ngModel)]="productForm.productCategory" required>
+              <option value="" disabled>Tour category</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Weekend Gateaway">Weekend Gateaway</option>
+              <option value="Hikes">Hikes</option>
+              <option value="International">International</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tourPrice">Product Price:</label>
+            <input type="number" id="tourPrice" placeholder="Tour Price" name="tourPrice"
+              [(ngModel)]="productForm.productPrice" required />
+          </div>
+        </div>
+
+        <!-- Itineraries -->
+        <p style="font-size: medium; font-weight: bold">Itineraries</p>
+        <div class="tourInfo">
+          <div class="form-group">
+            <label for="Slots">Quantity:</label>
+            <input type="number" id="Slots" placeholder="Slots" name="Slots" [(ngModel)]="productForm.Quantity" required />
+          </div>
+        </div>
+
+        <!-- more info -->
+        <p style="font-size: medium; font-weight: bold">More Info</p>
+        <div class="tourInfo">
+          <div class="form-group">
+            <label for="tourContact">Tour Contact:</label>
+            <input type="text" id="supplierContact" placeholder="Supplier Contact" name="supplierContact"
+              [(ngModel)]="productForm.supplierContact" required />
+          </div>
+          <div class="form-group">
+            <label for="tourDescription">Tour Description:</label>
+            <textarea id="tourDescription" placeholder="Tour Description" name="tourDescription"
+              [(ngModel)]="productForm.productDescription" required></textarea>
+          </div>
+        </div>
+
+        <p style="margin: 10px; color: red">{{ updateResponse }}</p>
+        <p style="margin: 10px; color: blue">{{ successResponse }}</p>
+
+        <button (click)="closeUpdate()" class="close">Close</button>
+        <button type="submit" class="formSubmit">Update Project</button>
+
+
+      </form>
+    </div>
+  </div>
+
+
+</div>

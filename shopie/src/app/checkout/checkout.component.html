@@ -1,0 +1,44 @@
+<app-navigation></app-navigation>
+
+<div *ngIf="deletes" class="navigation">
+  <div class="nav">
+    <li>
+      <h1>My Shopping Cart</h1>
+    </li>
+    <li class="delete-icon" title="Delete All">&#128465;</li>
+  </div>
+</div>
+
+
+<div id="modal" class="modal-container">
+  <div id="customDialog" class="custom-dialog">
+    <p>Are you sure you want to delete all items?</p>
+    <button id="confirmYes">Yes</button>
+    <button id="confirmNo">No</button>
+  </div>
+</div>
+
+<div class="main">
+  <div *ngIf="emptyCart"  class="empty">
+    <div class="emptyMessage">
+      <h1>Your Cart is Empty</h1>
+    </div>
+    <a routerLink="/landing">Start Shopping</a>
+  </div>
+</div>
+
+<div *ngIf="paymentOptions" class="payment-optionn"  [ngClass]="{'active': paymentOptions}">
+  <h2 style="margin-bottom: 20px;">Select Payment Option</h2>
+  <div class="payment-option">
+    <input type="radio" name="payment" id="mpesaOption" value="mpesa">
+    <label for="mpesaOption">Pay via M-Pesa</label>
+  </div>
+  <div class="payment-option">
+    <input type="radio" name="payment" id="cashOption" value="cash">
+    <label for="cashOption">Cash on Delivery</label>
+  </div>
+  <button onclick="processPayment()" class="checkout-button">Proceed to Pay</button>
+  <button (click)="notYet()" class="checkout-button">Decline</button>
+
+</div>
+<!-- <app-footer></app-footer> -->

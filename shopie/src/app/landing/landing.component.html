@@ -1,0 +1,58 @@
+<app-navigation ></app-navigation>
+<div class="nav">
+  <div class="home">
+    <ul>
+      <li class="music">Shoplify</li>
+      <li class="accountDropdown">
+        <div class="filter">
+          <select id="category">
+            <option value="">Categories</option>
+            <option value="jewelery">Jewelry</option>
+            <option value="electronics">Electronics</option>
+            <option value="women's clothing">Fashion wear</option>
+            <option value="men's clothing">Grocery</option>
+          </select>
+        </div>
+
+      </li>
+
+      <li>
+        <div class="search-container">
+          <input type="text" placeholder="Search Products, Brand and Categories" id="searchInput">
+          <i class="fas fa-coffee"></i>
+        </div>
+      </li>
+      <li><button class="search">SEARCH</button></li>
+
+    </ul>
+
+
+
+
+
+    
+  </div>
+  <div class="account">
+    <ul>
+      <div class="marquees">
+        <marquee>!!! HURRY, BLACK FRIDAY SALES</marquee>
+      </div>
+      <li class="accountDropdown">
+        <!-- <a href="">Help</a> -->
+        <div class="dropdown-content">
+          <a href="/views/signin.html">Product</a>
+          <a href="/views/signup.html">Account</a>
+        </div>
+      </li>
+      <div class="cart">
+        <li>Cart</li>
+        <li><a routerLink="/checkout"><i class="fa" style="font-size:24px">&#xf07a;</i>
+            <span class='badge badge-warning' id='cart-count'></span></a>
+        </li>
+
+      </div>
+
+    </ul>
+
+  </div>
+</div>

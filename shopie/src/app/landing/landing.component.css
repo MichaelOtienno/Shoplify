@@ -1,0 +1,187 @@
+/* @import "~@fortawesome/fontawesome-free/css/all.css"; */
+/* @import "~@fortawesome/fontawesome-free/css/all.min.css"; */
+
+
+/* naviagation */
+.advert {
+  display: flex;
+  align-items: center;
+  font-size: x-large;
+  color: black;
+  width: 40%;
+
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  /* border: solid red 2px; */
+}
+
+.home{
+  border:solid #d9d9d9 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 60vw;
+}
+.home input{
+  height: 30px;
+  border-radius: 5px;
+  border: solid gray 1px;
+  padding: 5px;
+  padding: 0.5em 1em;
+  width: 400px;
+  font-size: medium;
+}
+.home input:focus{
+  outline: none;
+}
+
+.music {
+  font-size: 38px;
+  font-weight: bold;
+
+}
+
+.home ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.search-container {
+  position: relative;
+  border: thistle gray 0.1px;
+}
+
+.search {
+  padding: 16px;
+  background-color: #f8982d;
+  color: #ffffff;
+  border: solid 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.home ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.home ul li {
+  margin: 10px;
+}
+
+.account{
+ /* border:solid blue 2px; */
+ width: 20vw;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ font-weight: bold;
+}
+
+.account ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.account ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.account ul li {
+  margin: 10px;
+}
+
+.marquees{
+  /* border:solid blue 2px; */
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
+
+button {
+  padding: 8px
+}
+
+.accountDropdown {
+  position: relative;
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.accountDropdown:hover .dropdown-content {
+  display: block;
+  width: auto;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(49, 47, 47);
+  color: white;
+}
+
+.cart {
+  display: flex;
+}
+
+.cart:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+
+/* category */
+
+select#category {
+  appearance: none;
+  padding: 16px 10px;
+  background: transparent;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0px;
+  outline: 0px;
+  background-color: #f8982d;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+select#category:hover {
+  background-color:black;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+#category * {
+  background-color:#ffffff;
+  color: black;
+
+}

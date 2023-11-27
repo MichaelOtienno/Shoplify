@@ -1,0 +1,22 @@
+<div class="nav">
+
+  <div class="date">
+    <div class="logo">
+      <marquee width="70%"   style="color:#f8982d;">🎉 HURRY, DISCOUNT AVAILABLE</marquee>
+    </div>
+
+  </div>
+
+  <div class="about">
+    <a routerLink="/landing">Shoplify</a>
+  </div>
+
+  <div class="accountIcon">
+    <a *ngIf="currentPage !== 'signup'" routerLink="/signup">Signup</a>
+    <a *ngIf="currentPage !== 'signin'" routerLink="/signin">Logout</a>
+    <a routerLink="/checkout">Checkout</a>
+  </div>
+  
+
+
+</div>
